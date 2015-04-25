@@ -14,7 +14,7 @@ public class UiController {
     @RequestMapping(value = "/view/index.html", method = {RequestMethod.GET, RequestMethod.POST})
     public ModelAndView handleDefault() {
         ModelAndView model = new ModelAndView("index");
-        model.addObject("msg", "hello!-- World");
+        model.addObject("msg", "hello!-- World ");
         return model;
 
     }
