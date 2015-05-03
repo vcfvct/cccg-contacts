@@ -2,7 +2,7 @@ CREATE TABLE HYMNS (
     id MEDIUMINT NOT NULL AUTO_INCREMENT,
     lyric VARCHAR(2048) CHARACTER SET utf8,
     name VARCHAR(64) CHARACTER SET utf8,
-    music_boox VARCHAR(256),
+    music_book VARCHAR(256),
     PRIMARY KEY (id)
 );
 INSERT INTO HYMNS (lyric, name) VALUES ('
