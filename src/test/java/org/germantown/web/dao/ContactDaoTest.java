@@ -4,6 +4,7 @@ import org.cccgermantown.web.AppConfig;
 import org.cccgermantown.web.PersistenceJPAConfig;
 import org.cccgermantown.web.dao.ContactDao;
 import org.cccgermantown.web.model.CntctEntity;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,7 @@ public class ContactDaoTest {
     @Autowired
     ContactDao contactDao;
 
+    @Ignore
     @Test
     public void testFindAllContacts() {
         List<CntctEntity> result = contactDao.findAll(CntctEntity.class);
