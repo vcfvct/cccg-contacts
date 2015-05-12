@@ -20,10 +20,12 @@ import java.util.Properties;
  */
 @Configuration
 @EnableTransactionManagement
-public class PersistenceJPAConfig{
+public class PersistenceJPAConfig
+{
 
     @Bean
-    public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
+    public LocalContainerEntityManagerFactoryBean entityManagerFactory()
+    {
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dataSource());
         em.setPackagesToScan("org.cccgermantown.web.model");
@@ -36,7 +38,8 @@ public class PersistenceJPAConfig{
     }
 
     @Bean
-    public DataSource dataSource(){
+    public DataSource dataSource()
+    {
         final JndiDataSourceLookup dsLookup = new JndiDataSourceLookup();
         dsLookup.setResourceRef(true);
         DataSource dataSource = dsLookup.getDataSource("jdbc/MySQLDS");
@@ -44,11 +47,12 @@ public class PersistenceJPAConfig{
     }
 
     /**
-     * the EntityManagerFactory is first retrieved from it’s bean factory and then passed to the transaction manager:
+     * the EntityManagerFactory is first retrieved from it's bean factory and then passed to the transaction manager:
      * txManager.setEntityManagerFactory( this.entityManagerFactoryBean().getObject() );
      */
     @Bean
-    public PlatformTransactionManager transactionManager(EntityManagerFactory emf){
+    public PlatformTransactionManager transactionManager(EntityManagerFactory emf)
+    {
         JpaTransactionManager transactionManager = new JpaTransactionManager();
         transactionManager.setEntityManagerFactory(emf);
 
@@ -56,11 +60,13 @@ public class PersistenceJPAConfig{
     }
 
     @Bean
-    public PersistenceExceptionTranslationPostProcessor exceptionTranslation(){
+    public PersistenceExceptionTranslationPostProcessor exceptionTranslation()
+    {
         return new PersistenceExceptionTranslationPostProcessor();
     }
 
-    Properties additionalProperties() {
+    Properties additionalProperties()
+    {
         Properties properties = new Properties();
         //if we set to create-drop, tables will be dropped and created every time sessionFactory is created.
         //we set to validate: validate the schema, makes no changes to the database
