@@ -1,6 +1,5 @@
 package org.cccgermantown.web.controller;
 
-import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -12,12 +11,12 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class UiController
 {
-    private final static Logger logger = Logger.getLogger(UiController.class);
+//    private final static Logger logger = Logger.getLogger(UiController.class);
 
     @RequestMapping(value = "/view/index.html", method = {RequestMethod.GET, RequestMethod.POST})
     public ModelAndView handleDefault()
     {
-        logger.info("Some one visited app.");
+//        logger.info("Some one visited app.");
         ModelAndView model = new ModelAndView("index");
         model.addObject("msg", "hello!-- World ");
         return model;

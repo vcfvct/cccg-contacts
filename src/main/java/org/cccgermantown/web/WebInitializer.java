@@ -23,11 +23,11 @@ public class WebInitializer implements WebApplicationInitializer {
         dispatcher.addMapping("/");
 
         //log4j config
-        servletContext.setInitParameter("log4jConfigLocation", "classpath:config/log4j.xml");
-        servletContext.setInitParameter("log4jRefreshInterval", "10000");
-        servletContext.setInitParameter("log4jExposeWebAppRoot", "false");
-        Log4jConfigListener log4jListener = new Log4jConfigListener();
-        servletContext.addListener(log4jListener);
+//        servletContext.setInitParameter("log4jConfigLocation", "classpath:config/log4j.xml");
+//        servletContext.setInitParameter("log4jRefreshInterval", "10000");
+//        servletContext.setInitParameter("log4jExposeWebAppRoot", "false");
+//        Log4jConfigListener log4jListener = new Log4jConfigListener();
+//        servletContext.addListener(log4jListener);
 
 
     }
