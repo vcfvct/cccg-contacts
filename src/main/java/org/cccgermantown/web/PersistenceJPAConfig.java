@@ -101,7 +101,7 @@ public class PersistenceJPAConfig
         Properties properties = new Properties();
         //if we set to create-drop, tables will be dropped and created every time sessionFactory is created.
         //we set to validate: validate the schema, makes no changes to the database
-//        properties.setProperty("hibernate.hbm2ddl.auto", "validate");
+        properties.setProperty("hibernate.hbm2ddl.auto", "validate");
         properties.setProperty("hibernate.show_sql", "true");
         properties.setProperty("hibernate.format_sql", "true");
         properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
