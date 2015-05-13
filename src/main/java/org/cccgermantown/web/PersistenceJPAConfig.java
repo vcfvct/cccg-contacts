@@ -13,6 +13,9 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
+import java.sql.Connection;
+import java.sql.DatabaseMetaData;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Properties;
 
@@ -43,12 +46,33 @@ public class PersistenceJPAConfig
         final JndiDataSourceLookup dsLookup = new JndiDataSourceLookup();
         dsLookup.setResourceRef(true);
         DataSource dataSource = dsLookup.getDataSource("jdbc/MySQLDS");
+        Connection connection = null;
         try
         {
-            System.out.println("Got data source: " + dataSource.getConnection().getMetaData().getURL());
+            connection = dataSource.getConnection();
+            DatabaseMetaData md = connection.getMetaData();
+            System.out.println("Got data source: " + md.getURL());
+
+            ResultSet rs = md.getTables(null, null, "%", null);
+            while (rs.next())
+            {
+                System.out.println(rs.getString(3));
+            }
         } catch (SQLException e)
         {
             e.printStackTrace();
+        } finally
+        {
+            try
+            {
+                if (connection != null)
+                {
+                    connection.close();
+                }
+            } catch (SQLException e)
+            {
+                e.printStackTrace();
+            }
         }
         return dataSource;
     }
