@@ -1,5 +1,6 @@
 package org.cccgermantown.web;
 
+import org.apache.log4j.Logger;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
@@ -22,6 +23,7 @@ import java.util.Properties;
 @EnableTransactionManagement
 public class PersistenceJPAConfig
 {
+    private final static Logger logger = Logger.getLogger(PersistenceJPAConfig.class);
 
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory()
@@ -43,6 +45,7 @@ public class PersistenceJPAConfig
         final JndiDataSourceLookup dsLookup = new JndiDataSourceLookup();
         dsLookup.setResourceRef(true);
         DataSource dataSource = dsLookup.getDataSource("jdbc/MySQLDS");
+        logger.info("Got datasource: " + dataSource.toString());
         return dataSource;
     }
 
