@@ -13,13 +13,21 @@ public class UiController
 {
 //    private final static Logger logger = Logger.getLogger(UiController.class);
 
-    @RequestMapping(value = "/view/index.html", method = {RequestMethod.GET, RequestMethod.POST})
+    @RequestMapping(value = {"", "/", "/view/index.html"}, method = {RequestMethod.GET, RequestMethod.POST})
     public ModelAndView handleDefault()
     {
 //        logger.info("Some one visited app.");
         ModelAndView model = new ModelAndView("index");
         model.addObject("msg", "hello!-- World ");
         return model;
+    }
 
+    @RequestMapping(value =  "/view/snoop", method = {RequestMethod.GET, RequestMethod.POST})
+    public ModelAndView handleSnoop()
+    {
+//        logger.info("Some one visited app.");
+        ModelAndView model = new ModelAndView("snoop");
+//        model.addObject("msg", "hello!-- World ");
+        return model;
     }
 }
